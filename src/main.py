@@ -156,7 +156,7 @@ def tic_tac_toe():
     # Choose the players' markers
     markers = choose_markers(["X", "O"])
     print(f"Player 1 is "+markers[0]+" and Player 2 is "+markers[1]+".")
-    wins = [0,0]
+    wins = [0,0,0] #Count wins of Player 1, wins of Player 2, and draws
 
     # Loop for multiple rounds
     while True:
@@ -184,6 +184,7 @@ def tic_tac_toe():
             # Check for a draw
             elif draw_check(board,markers):
                 print("It's a draw!")
+                wins[-1] += 1
                 break
 
             # Move to the next player
@@ -193,7 +194,7 @@ def tic_tac_toe():
         if new_round() == False:
             break
 
-    print('Player 1 won '+str(wins[0])+' times and Player 2 won '+str(wins[1])+' times!')
+    print('Nice game! Player 1 wins: '+str(wins[0])+'. Player 2 wins: '+str(wins[1])+'. Draws: '+str(wins[2])+'.')
 
 if __name__ == "__main__":
     tic_tac_toe()
