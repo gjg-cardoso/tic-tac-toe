@@ -156,7 +156,11 @@ def tic_tac_toe():
     # Choose the players' markers
     markers = choose_markers(["X", "O"])
     print(f"Player 1 is "+markers[0]+" and Player 2 is "+markers[1]+".")
-    wins = [0,0,0] #Count wins of Player 1, wins of Player 2, and draws
+
+    #Initiallize score count and select starting player randomly
+    wins = [0,0,0] #Wins of Player 1, wins of Player 2, and draws
+    player_turn = choose_player()
+    print(f"Coin toss: Player {str(player_turn+1)} starts!")
 
     # Loop for multiple rounds
     while True:
@@ -166,7 +170,7 @@ def tic_tac_toe():
         display_board(board)
 
         # Game loop
-        player_turn = choose_player()
+        print(f'Round {str(sum(wins)+1)} starting!')
         print('Player '+str(player_turn + 1)+' goes first.')
 
         while True:
@@ -193,6 +197,8 @@ def tic_tac_toe():
         # Ask for another round
         if new_round() == False:
             break
+        else:
+            player_turn = (player_turn + 1)%2
 
     print('Nice game! Player 1 wins: '+str(wins[0])+'. Player 2 wins: '+str(wins[1])+'. Draws: '+str(wins[2])+'.')
 
